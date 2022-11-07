@@ -6,7 +6,7 @@
 /*   By: ntanjaou <ntanjaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 00:23:30 by ntanjaou          #+#    #+#             */
-/*   Updated: 2022/11/06 23:34:32 by ntanjaou         ###   ########.fr       */
+/*   Updated: 2022/11/07 19:20:50 by ntanjaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,6 @@ int	check_map_ressources(char **map, t_map *test)
 		ft_free_str_map(NULL, six_lines);
 		return (0);
 	}
+	ft_free_str_map(NULL, six_lines);
 	return (1);
 }

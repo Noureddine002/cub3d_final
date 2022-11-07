@@ -6,7 +6,7 @@
 /*   By: ntanjaou <ntanjaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 15:15:37 by ntanjaou          #+#    #+#             */
-/*   Updated: 2022/11/07 00:32:55 by ntanjaou         ###   ########.fr       */
+/*   Updated: 2022/11/07 19:36:09 by ntanjaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,16 @@ void	initialize_xpm(t_map *mapp)
 	mapp->mlx = mlx_init();
 	mapp->ground = mlx_xpm_file_to_image(mapp->mlx, GROUD,
 			&mapp->img_w, &mapp->img_h);
+	if (!mapp->ground)
+		exit(0);
 	mapp->wall = mlx_xpm_file_to_image(mapp->mlx, WALL,
 			&mapp->img_w, &mapp->img_h);
+	if (!mapp->wall)
+		exit(0);
 	mapp->player->player = mlx_xpm_file_to_image(mapp->mlx, PLAYER,
 			&mapp->img_w, &mapp->img_h);
+	if (!mapp->player->player)
+		exit(0);
 	mapp->win2 = mlx_new_window(mapp->mlx, WIN_W,
 			WIN_H, "./Cub3d");
 }

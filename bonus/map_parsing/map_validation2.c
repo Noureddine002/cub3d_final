@@ -6,7 +6,7 @@
 /*   By: ntanjaou <ntanjaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 00:00:24 by ntanjaou          #+#    #+#             */
-/*   Updated: 2022/11/06 00:04:20 by ntanjaou         ###   ########.fr       */
+/*   Updated: 2022/11/07 19:23:37 by ntanjaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,46 +51,6 @@ int	check_duplicate_direction(char **sixlines)
 	return (1);
 }
 
-char	*read_xpm(int fd)
-{
-	int		c;
-	char	*buf;
-	char	*s;
-
-	buf = (char *)malloc(sizeof(char) * (2));
-	s = malloc(1);
-	if (!buf)
-		return (0);
-	c = 1;
-	while (c > 0)
-	{	
-		c = read(fd, buf, 1);
-		if (c == -1)
-		{
-			free(buf);
-			return (0);
-		}
-		buf[c] = '\0';
-		s = ft_strjoin(s, buf);
-	}
-	free(buf);
-	if (ft_strlen(s) == 0)
-		return (0);
-	return (s);
-}
-
-int	full_xpm(char *s)
-{
-	int		fd;
-	char	*str;
-
-	fd = open(s, O_RDONLY);
-	str = read_xpm(fd);
-	if (!str)
-		return (0);
-	return (1);
-}
-
 int	check_xpm_files(char **sixlines)
 {
 	int		i;
@@ -108,7 +68,7 @@ int	check_xpm_files(char **sixlines)
 				while (s[j] == ' ')
 					++s;
 			if (open(s, O_RDWR, 777) == -1
-				|| ft_strcmp(ft_strrchr(s, '.'), ".xpm") != 0 || !full_xpm(s))
+				|| ft_strcmp(ft_strrchr(s, '.'), ".xpm") != 0)
 				return (0);
 			i++;
 		}

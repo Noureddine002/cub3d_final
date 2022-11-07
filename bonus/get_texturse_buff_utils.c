@@ -6,7 +6,7 @@
 /*   By: ntanjaou <ntanjaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 09:07:18 by aaitoual          #+#    #+#             */
-/*   Updated: 2022/11/06 23:33:13 by ntanjaou         ###   ########.fr       */
+/*   Updated: 2022/11/07 19:37:25 by ntanjaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	get_no_texture(t_map *info)
 	int		*buff;
 
 	img1.img = mlx_xpm_file_to_image(info->mlx, info->txt_no, &j, &i);
+	if (!img1.img)
+		exit(0);
 	img1.addr = mlx_get_data_addr(img1.img, &img1.bits_per_pixel,
 			&img1.line_length, &img1.endian);
 	buff = malloc(4 * i * j);
@@ -48,6 +50,8 @@ void	get_we_texture(t_map *info)
 	int		*buff;
 
 	img1.img = mlx_xpm_file_to_image(info->mlx, info->txt_we, &j, &i);
+	if (!img1.img)
+		exit(0);
 	img1.addr = mlx_get_data_addr(img1.img, &img1.bits_per_pixel,
 			&img1.line_length, &img1.endian);
 	buff = malloc(4 * i * j);
@@ -75,6 +79,8 @@ void	get_so_texture(t_map *info)
 	int		*buff;
 
 	img1.img = mlx_xpm_file_to_image(info->mlx, info->txt_so, &j, &i);
+	if (!img1.img)
+		exit(0);
 	img1.addr = mlx_get_data_addr(img1.img, &img1.bits_per_pixel,
 			&img1.line_length, &img1.endian);
 	buff = malloc(4 * i * j);

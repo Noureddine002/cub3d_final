@@ -6,7 +6,7 @@
 /*   By: ntanjaou <ntanjaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 00:07:16 by ntanjaou          #+#    #+#             */
-/*   Updated: 2022/11/06 00:07:26 by ntanjaou         ###   ########.fr       */
+/*   Updated: 2022/11/07 19:35:06 by ntanjaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,9 @@ char	**ft_free_str_map(char *s, char **map)
 	i = 0;
 	if (s)
 		free(s);
-	while (map[i])
+	while (map && map[i])
 		free(map[i++]);
-	free(map);
+	if (map)
+		free(map);
 	return (NULL);
 }

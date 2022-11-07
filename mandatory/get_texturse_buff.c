@@ -6,7 +6,7 @@
 /*   By: ntanjaou <ntanjaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 08:47:24 by aaitoual          #+#    #+#             */
-/*   Updated: 2022/11/06 23:33:46 by ntanjaou         ###   ########.fr       */
+/*   Updated: 2022/11/07 19:36:50 by ntanjaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	get_texture_buff(t_map *info)
 	t_img	img1;
 
 	img1.img = mlx_xpm_file_to_image(info->mlx, info->txt_ea, &j, &i);
+	if (!img1.img)
+		exit(0);
 	img1.addr = mlx_get_data_addr(img1.img, &img1.bits_per_pixel,
 			&img1.line_length, &img1.endian);
 	info->buff_ea = malloc(4 * i * j);
@@ -40,10 +42,7 @@ void	get_texture_buff(t_map *info)
 	{
 		j = -1;
 		while (++j < TILESIZE)
-		{
-			info->buff_ea[k] = get_color(img1, j, i);
-			k++;
-		}
+			info->buff_ea[k++] = get_color(img1, j, i);
 	}
 	mlx_destroy_image(info->mlx, img1.img);
 	get_no_texture(info);
